@@ -125,7 +125,7 @@ gen_image_file() {
   fi
 
   rootfs_size=$(expr $(df -P | grep /$ | awk '{print $3}') \* 5 / 4 \* 1024)
-  backup_size=$(expr \( $rootfs_size + \( ${rootfs_start} + 40 \) \* 512 \) / 1024 / 1024)
+  backup_size=$(expr \( $rootfs_size + \( ${rootfs_start} + 40 \) \* 512 \) / 1024 / 1024 + 500)
 
   dd if=/dev/zero of=${output} bs=1M count=0 seek=$backup_size status=none
 
